@@ -5,8 +5,6 @@ RSpec.describe ViewersController, type: :controller do
 		
 		context 'GET index' do
 			it 'should show all viewers successfully' do
-				viewer1 = FactoryGirl.create(:viewer, phone_no:"546382900")
-				viewer2 = FactoryGirl.create(:viewer, phone_no:"546382900")
 	      get :index, format: 'json'
 	      response.should have_http_status(:ok)
 	    end

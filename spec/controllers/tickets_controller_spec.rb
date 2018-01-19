@@ -5,8 +5,6 @@ RSpec.describe TicketsController, type: :controller do
 		
 		context 'GET index' do
 			it 'should show all tickets successfully' do
-				ticket1 = FactoryGirl.create(:ticket)
-				ticket2 = FactoryGirl.create(:ticket)
 	      get :index, format: 'json'
 	      response.should have_http_status(:ok)
 	    end

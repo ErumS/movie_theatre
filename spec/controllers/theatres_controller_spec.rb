@@ -5,8 +5,6 @@ RSpec.describe TheatresController, type: :controller do
 		
 		context 'GET index' do
 			it 'should show all theatres successfully' do
-				theatre1 = FactoryGirl.create(:theatre, phone_no:"545665332234")
-				theatre2 = FactoryGirl.create(:theatre, phone_no:"545665332234")
 	      get :index, format: 'json'
 	      response.should have_http_status(:ok)
 	    end

@@ -5,8 +5,6 @@ RSpec.describe ShowtimesController, type: :controller do
 		
 		context 'GET index' do
 			it 'should show all showtimes successfully' do
-				showtime1 = FactoryGirl.create(:showtime)
-				showtime2 = FactoryGirl.create(:showtime)
 	      get :index, format: 'json'
 	      response.should have_http_status(:ok)
 	    end

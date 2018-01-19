@@ -5,8 +5,6 @@ RSpec.describe BookingsController, type: :controller do
 		
 		context 'GET index' do
 			it 'should show all bookings successfully' do
-				booking1 = FactoryGirl.create(:booking)
-				booking2 = FactoryGirl.create(:booking)
 	      get :index, format: 'json'
 	      response.should have_http_status(:ok)
 	    end

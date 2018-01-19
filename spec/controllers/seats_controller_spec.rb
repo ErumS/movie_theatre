@@ -5,8 +5,6 @@ RSpec.describe SeatsController, type: :controller do
 		
 		context 'GET index' do
 			it 'should show all seats successfully' do
-				seat1 = FactoryGirl.create(:seat)
-				seat2 = FactoryGirl.create(:seat)
 	      get :index, format: 'json'
 	      response.should have_http_status(:ok)
 	    end

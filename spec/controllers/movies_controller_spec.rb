@@ -5,8 +5,6 @@ RSpec.describe MoviesController, type: :controller do
 		
 		context 'GET index' do
 			it 'should show all movies successfully' do
-				movie1 = FactoryGirl.create(:movie)
-				movie2 = FactoryGirl.create(:movie)
 	      get :index, format: 'json'
 	      response.should have_http_status(:ok)
 	    end

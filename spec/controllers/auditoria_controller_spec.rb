@@ -5,8 +5,6 @@ RSpec.describe AuditoriaController, type: :controller do
 		
 		context 'GET index' do
 			it 'should show all auditoria successfully' do
-				auditorium1 = FactoryGirl.create(:auditorium)
-				auditorium2 = FactoryGirl.create(:auditorium)
 	      get :index, format: 'json'
 	      response.should have_http_status(:ok)
 	    end
