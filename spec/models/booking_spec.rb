@@ -8,31 +8,31 @@ RSpec.describe Booking, type: :model do
     		FactoryGirl.build(:booking).should be_valid
     	end
     	it 'should be a valid booking' do
-    		FactoryGirl.build(:booking, booking_type:"recliner", no_of_bookings:4).should be_valid
+    		FactoryGirl.build(:booking, booking_category:"recliner", no_of_bookings:4).should be_valid
     	end
     end
 
     context 'Failure' do
     	it 'should not be a valid booking' do
-    		FactoryGirl.build(:booking, booking_type:"recliner", no_of_bookings:nil).should_not be_valid
+    		FactoryGirl.build(:booking, booking_category:"recliner", no_of_bookings:nil).should_not be_valid
     	end
     	it 'should not be a valid booking' do
-    		FactoryGirl.build(:booking, booking_type:"middle", no_of_bookings:49).should_not be_valid
+    		FactoryGirl.build(:booking, booking_category:"middle", no_of_bookings:49).should_not be_valid
     	end
     	it 'should not be a valid booking' do
-    		FactoryGirl.build(:booking, booking_type:nil).should_not be_valid
+    		FactoryGirl.build(:booking, booking_category:nil).should_not be_valid
     	end
     	it 'should not be a valid booking' do
     		FactoryGirl.build(:booking, no_of_bookings:nil).should_not be_valid
     	end
     	it 'should not be a valid booking' do
-    		FactoryGirl.build(:booking, booking_type:nil, no_of_bookings:nil).should_not be_valid
+    		FactoryGirl.build(:booking, booking_category:nil, no_of_bookings:nil).should_not be_valid
     	end
     	it 'should not be a valid booking' do
-    		FactoryGirl.build(:booking, booking_type:"recliner", no_of_bookings:"abcd").should_not be_valid
+    		FactoryGirl.build(:booking, booking_category:"recliner", no_of_bookings:"abcd").should_not be_valid
     	end
     	it 'should not be a valid booking' do
-    		FactoryGirl.build(:booking, booking_type:"lower", no_of_bookings:0).should_not be_valid
+    		FactoryGirl.build(:booking, booking_category:"lower", no_of_bookings:0).should_not be_valid
     	end
     end
 	end
@@ -42,7 +42,7 @@ RSpec.describe Booking, type: :model do
 
 	context 'Success' do
 		it 'should belongs to theatre' do
-        theatre = FactoryGirl.create(:theatre, phone_no:"3344556677")
+        theatre = FactoryGirl.create(:theatre)
         booking = FactoryGirl.create(:booking, theatre_id:theatre.id)
         booking.theatre.id.should eq theatre.id
       end
@@ -79,8 +79,8 @@ RSpec.describe Booking, type: :model do
 
 		context 'Failure' do
       it 'should not belongs to theatre' do
-        theatre1 = FactoryGirl.create(:theatre, phone_no:"3344556677")
-        theatre2 = FactoryGirl.create(:theatre, phone_no:"3344556677")
+        theatre1 = FactoryGirl.create(:theatre)
+        theatre2 = FactoryGirl.create(:theatre)
         booking1 = FactoryGirl.create(:booking, theatre_id:theatre1.id)
         booking2 = FactoryGirl.create(:booking, theatre_id:theatre2.id)
         booking1.theatre.id.should eq theatre1.id
@@ -109,8 +109,8 @@ RSpec.describe Booking, type: :model do
         booking2.auditorium.id.should_not eq auditorium1.id
       end
       it 'should not belongs to viewer' do
-        viewer1 = FactoryGirl.create(:viewer, phone_no:"3344556677")
-        viewer2 = FactoryGirl.create(:viewer, phone_no:"3344556677")
+        viewer1 = FactoryGirl.create(:viewer)
+        viewer2 = FactoryGirl.create(:viewer)
         booking1 = FactoryGirl.create(:booking, viewer_id:viewer1.id)
         booking2 = FactoryGirl.create(:booking, viewer_id:viewer2.id)
         booking1.viewer.id.should eq viewer1.id

@@ -29,7 +29,7 @@ RSpec.describe Seat, type: :model do
 
     context 'Success' do
       it 'should belongs to theatre' do
-        theatre = FactoryGirl.create(:theatre, phone_no:"3344556677")
+        theatre = FactoryGirl.create(:theatre)
         seat = FactoryGirl.create(:seat ,theatre_id:theatre.id)
         seat.theatre.id.should eq theatre.id
       end
@@ -47,8 +47,8 @@ RSpec.describe Seat, type: :model do
 
     context 'Failure' do
       it 'should not belongs to theatre' do
-        theatre1 = FactoryGirl.create(:theatre, phone_no:"3344556677")
-        theatre2 = FactoryGirl.create(:theatre, phone_no:"3344556677")
+        theatre1 = FactoryGirl.create(:theatre)
+        theatre2 = FactoryGirl.create(:theatre)
         seat1 = FactoryGirl.create(:seat, theatre_id:theatre1.id)
         seat2 = FactoryGirl.create(:seat, theatre_id:theatre2.id)
         seat1.theatre.id.should eq theatre1.id
@@ -67,8 +67,8 @@ RSpec.describe Seat, type: :model do
         seat2.auditorium.id.should_not eq auditorium1.id
       end
       it 'should not belongs to viewer' do
-        viewer1 = FactoryGirl.create(:viewer, phone_no:"3344556677")
-        viewer2 = FactoryGirl.create(:viewer, phone_no:"3344556677")
+        viewer1 = FactoryGirl.create(:viewer)
+        viewer2 = FactoryGirl.create(:viewer)
         seat1 = FactoryGirl.create(:seat, viewer_id:viewer1.id)
         seat2 = FactoryGirl.create(:seat, viewer_id:viewer2.id)
         seat1.viewer.id.should eq viewer1.id

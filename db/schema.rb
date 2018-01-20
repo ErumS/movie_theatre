@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118113738) do
+ActiveRecord::Schema.define(version: 20180120110928) do
 
   create_table "auditoria", force: :cascade do |t|
     t.string   "screen_size", limit: 255
@@ -26,15 +26,15 @@ ActiveRecord::Schema.define(version: 20180118113738) do
   add_index "auditoria", ["theatre_id"], name: "index_auditoria_on_theatre_id", using: :btree
 
   create_table "bookings", force: :cascade do |t|
-    t.string   "booking_type",   limit: 255
-    t.integer  "no_of_bookings", limit: 4
-    t.integer  "theatre_id",     limit: 4
-    t.integer  "movie_id",       limit: 4
-    t.integer  "auditorium_id",  limit: 4
-    t.integer  "viewer_id",      limit: 4
-    t.integer  "showtime_id",    limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "booking_category", limit: 255
+    t.integer  "no_of_bookings",   limit: 4
+    t.integer  "theatre_id",       limit: 4
+    t.integer  "movie_id",         limit: 4
+    t.integer  "auditorium_id",    limit: 4
+    t.integer  "viewer_id",        limit: 4
+    t.integer  "showtime_id",      limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "bookings", ["auditorium_id"], name: "index_bookings_on_auditorium_id", using: :btree

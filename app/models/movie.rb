@@ -4,6 +4,6 @@ class Movie < ActiveRecord::Base
 	has_many :viewers, dependent: :destroy
 	has_many :showtimes, dependent: :destroy
 	has_many :bookings, dependent: :destroy
-	validates :name, presence: true
+	validates :name, :theatre_id, presence: true
 	validates :rating, presence: true, inclusion: {in: 1..5}
 end

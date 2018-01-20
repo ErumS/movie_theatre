@@ -18,8 +18,8 @@ RSpec.describe MoviesController, type: :controller do
 	  end
 		context 'POST create' do
 			it 'should create a valid movie' do
-				movie = FactoryGirl.build(:movie)
-				post :create, movie: {name: movie.name, rating:movie.rating, theatre_id:movie.theatre_id},format: 'json'
+        theatre = FactoryGirl.create(:theatre, phone_no: "5747546488")
+				post :create, movie: { name: "ABCD", rating: 3, theatre_id:theatre.id },format: 'json'
 				response.should have_http_status(:ok)
 			end
 		end
@@ -27,7 +27,9 @@ RSpec.describe MoviesController, type: :controller do
 			it 'should update a valid movie' do
 				movie = FactoryGirl.create(:movie)
 				put :update, id:movie.id, movie: {name: "abc", rating:movie.rating, theatre_id:movie.theatre_id}, format: 'json'
-				response.should have_http_status(:ok)
+				new_movie = Movie.last
+        new_movie.name.should eq "abc"
+        response.should have_http_status(:ok)
 			end
 		end
 		context 'DELETE destroy' do
@@ -44,33 +46,32 @@ RSpec.describe MoviesController, type: :controller do
 		context 'GET show' do
 			it 'should not show movie with invalid id' do
 				movie = FactoryGirl.create(:movie)
-        a = Movie.last
-				get :show, id:a.id+1, format: 'json'
+        new_movie = Movie.last
+				get :show, id:new_movie.id+1, format: 'json'
 				response.should have_http_status(:not_found)
 			end
 		end
 		context 'POST create' do
 			it 'should not create a movie with invalid input' do
-				movie = FactoryGirl.build(:movie)
-				post :create, movie: {name: movie.name, rating:555},format: 'json'
+        theatre = FactoryGirl.create(:theatre)
+        theatre.destroy
+				post :create, movie: {name: "ABCD", rating:555, theatre_id:theatre.id}, format: 'json'
 				response.should have_http_status(:unprocessable_entity)
 			end
 			it 'should not create a movie with nil entries' do
-				movie = FactoryGirl.build(:movie)
 				post :create, movie: {name: nil},format: 'json'
 				response.should have_http_status(:unprocessable_entity)
 			end
 			it 'should not create a movie with invalid theatre id' do
-				movie = FactoryGirl.build(:movie)
-				post :create, movie: {theatre_id:nil},format: 'json'
+				post :create, movie: {theatre_id:nil}, format: 'json'
 				response.should have_http_status(:unprocessable_entity)
 			end
 		end
 		context 'PUT update' do
 			it 'should not update the movie with invalid id' do
 				movie = FactoryGirl.create(:movie)
-        a = Movie.last
-				put :update, id:a.id+1, movie: {name: "abc", rating:3}, format: 'json'
+        new_movie = Movie.last
+				put :update, id:new_movie.id+1, movie: {name: "abc", rating:3}, format: 'json'
 				response.should have_http_status(:not_found)
 			end	
 			it 'should not update the movie with invalid input' do
@@ -80,17 +81,17 @@ RSpec.describe MoviesController, type: :controller do
 			end	
 			it 'should not update the movie with invalid theatre id' do
 				movie = FactoryGirl.create(:movie)
-        theatre = FactoryGirl.create(:theatre, phone_no:"6667777799")
-        a = Theatre.last
-				put :update, id:movie.id, movie: {name: "abc", theatre_id:a.id+1}, format: 'json'
+        theatre = FactoryGirl.create(:theatre)
+        new_movie = Theatre.last
+				put :update, id:movie.id, movie: {name: "abc", theatre_id:new_movie.id+1}, format: 'json'
 				response.should have_http_status(:not_found)
 			end	
 		end 
 		context 'DELETE destroy' do
 			it 'should not delete the movie with invalid id' do
 				movie = FactoryGirl.create(:movie)
-        a = Movie.last
-				delete :destroy, id:a.id+1, format: 'json'
+        new_movie = Movie.last
+				delete :destroy, id:new_movie.id+1, format: 'json'
 				response.should have_http_status(:not_found)
 			end
 		end

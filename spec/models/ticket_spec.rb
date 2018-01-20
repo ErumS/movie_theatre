@@ -72,8 +72,8 @@ RSpec.describe Ticket, type: :model do
 
     context 'Failure' do
       it 'should not belongs to viewer' do
-        viewer1 = FactoryGirl.create(:viewer, phone_no:"3344556677")
-        viewer2 = FactoryGirl.create(:viewer, phone_no:"3344556677")
+        viewer1 = FactoryGirl.create(:viewer)
+        viewer2 = FactoryGirl.create(:viewer)
         ticket1 = FactoryGirl.create(:ticket, viewer_id:viewer1.id)
         ticket2 = FactoryGirl.create(:ticket, viewer_id:viewer2.id)
         ticket1.viewer.id.should eq viewer1.id

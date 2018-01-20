@@ -35,7 +35,7 @@ RSpec.describe Auditorium, type: :model do
 
     context 'Success' do
       it 'should belongs to theatre' do
-        theatre = FactoryGirl.create(:theatre, phone_no:"3344556677")
+        theatre = FactoryGirl.create(:theatre)
         auditorium = FactoryGirl.create(:auditorium ,theatre_id:theatre.id)
         auditorium.theatre.id.should eq theatre.id
       end
@@ -71,8 +71,8 @@ RSpec.describe Auditorium, type: :model do
 
     context 'Failure' do
       it 'should not belongs to theatre' do
-        theatre1 = FactoryGirl.create(:theatre, phone_no:"3344556677")
-        theatre2 = FactoryGirl.create(:theatre, phone_no:"3344556677")
+        theatre1 = FactoryGirl.create(:theatre)
+        theatre2 = FactoryGirl.create(:theatre)
         auditorium1 = FactoryGirl.create(:auditorium, theatre_id:theatre1.id)
         auditorium2 = FactoryGirl.create(:auditorium, theatre_id:theatre2.id)
         auditorium1.theatre.id.should eq theatre1.id

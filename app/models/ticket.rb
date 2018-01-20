@@ -4,5 +4,5 @@ class Ticket < ActiveRecord::Base
 	belongs_to :booking
 	validates :purchase_date, presence: true
 	validates :movie_date, presence: true
-	validates :price, presence: true
+	validates :price, :showtime_id, :viewer_id, :booking_id, presence: true
 end

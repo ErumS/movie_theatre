@@ -38,7 +38,7 @@ RSpec.describe Movie, type: :model do
 
     context 'Success' do
       it 'should belongs to theatre' do
-        theatre = FactoryGirl.create(:theatre, phone_no:"3344556677")
+        theatre = FactoryGirl.create(:theatre)
         movie = FactoryGirl.create(:movie, theatre_id:theatre.id)
         movie.theatre.id.should eq theatre.id
       end
@@ -76,8 +76,8 @@ RSpec.describe Movie, type: :model do
 
     context 'Failure' do
       it 'should not belongs to theatre' do
-        theatre1 = FactoryGirl.create(:theatre, phone_no:"3344556677")
-        theatre2 = FactoryGirl.create(:theatre, phone_no:"3344556677")
+        theatre1 = FactoryGirl.create(:theatre)
+        theatre2 = FactoryGirl.create(:theatre)
         movie1 = FactoryGirl.create(:movie, theatre_id:theatre1.id)
         movie2 = FactoryGirl.create(:movie, theatre_id:theatre2.id)
         movie1.theatre.id.should eq theatre1.id

@@ -4,6 +4,6 @@ class Auditorium < ActiveRecord::Base
 	has_many :viewers, dependent: :destroy
 	has_many :bookings, dependent: :destroy
 	has_many :seats, dependent: :destroy
-	validates :screen_size, presence: true
+	validates :screen_size, :theatre_id, :movie_id, presence: true
 	validates :no_of_seats, presence: true, inclusion: {in: 1..200}
 end

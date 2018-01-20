@@ -18,8 +18,10 @@ RSpec.describe TicketsController, type: :controller do
 	  end
 		context 'POST create' do
 			it 'should create a valid ticket' do
-				ticket = FactoryGirl.build(:ticket)
-				post :create, ticket: {purchase_date:ticket.purchase_date, movie_date:ticket.movie_date, price:ticket.price, viewer_id:ticket.viewer_id, booking_id:ticket.booking_id},format: 'json'
+        showtime = FactoryGirl.create(:showtime)
+        viewer = FactoryGirl.create(:viewer)
+        booking = FactoryGirl.create(:booking)
+				post :create, ticket: { purchase_date: "01-02-2016", movie_date: "01-03-2016", price: 125, showtime_id:showtime.id, viewer_id:viewer.id, booking_id:booking.id }, format: 'json'
 				response.should have_http_status(:ok)
 			end
 		end
@@ -27,7 +29,9 @@ RSpec.describe TicketsController, type: :controller do
 			it 'should update a valid ticket' do
 				ticket = FactoryGirl.create(:ticket)
 				put :update, id:ticket.id, ticket: {purchase_date:ticket.purchase_date, movie_date:ticket.movie_date, price:240, viewer_id:ticket.viewer_id, booking_id:ticket.booking_id}, format: 'json'
-				response.should have_http_status(:ok)
+				new_ticket = Ticket.last
+        new_ticket.price.should eq 240
+        response.should have_http_status(:ok)
 			end
 		end
 		context 'DELETE destroy' do
@@ -44,40 +48,36 @@ RSpec.describe TicketsController, type: :controller do
 		context 'GET show' do
 			it 'should not show a valid ticket' do
 				ticket = FactoryGirl.create(:ticket)
-        a = Ticket.last
-				get :show, id:a.id+1, format: 'json'
+        new_ticket = Ticket.last
+				get :show, id:new_ticket.id+1, format: 'json'
 				response.should have_http_status(:not_found)
 			end
 		end
 		context 'POST create' do
 			it 'should not create a ticket with invalid input' do
-				ticket = FactoryGirl.build(:ticket)
-				post :create, ticket: {purchase_date:ticket.purchase_date, movie_date:"abc", price:ticket.price},format: 'json'
+				post :create, ticket: { movie_date:"abc" },format: 'json'
 				response.should have_http_status(:unprocessable_entity)
 			end
 			it 'should not create a ticket with nil entries' do
-				ticket = FactoryGirl.build(:ticket)
 				post :create, ticket: {purchase_date:nil},format: 'json'
 				response.should have_http_status(:unprocessable_entity)
 			end
 			it 'should not create a ticket with invalid viewer_id' do
-				ticket = FactoryGirl.build(:ticket)
 				post :create, ticket: {viewer_id:nil},format: 'json'
 				response.should have_http_status(:unprocessable_entity)
 			end
 			it 'should not create a ticket with invalid booking_id' do
-				ticket = FactoryGirl.build(:ticket)
         booking = FactoryGirl.create(:booking)
-        a = Booking.last
-				post :create, ticket: {booking_id:a.id+1},format: 'json'
+        new_booking = Booking.last
+				post :create, ticket: {booking_id:new_booking.id+1},format: 'json'
 				response.should have_http_status(:unprocessable_entity)
 			end
 		end
 		context 'PUT update' do
 			it 'should not update the ticket with invalid id' do
 				ticket = FactoryGirl.create(:ticket)
-        a = Ticket.last
-				put :update, id:a.id+1, ticket: {purchase_date:ticket.purchase_date, movie_date:ticket.movie_date, price:ticket.price}, format: 'json'
+        new_ticket = Ticket.last
+				put :update, id:new_ticket.id+1, ticket: {purchase_date:ticket.purchase_date, movie_date:ticket.movie_date, price:ticket.price}, format: 'json'
 				response.should have_http_status(:not_found)
 			end	
 			it 'should not update the ticket with invalid input' do
@@ -87,22 +87,22 @@ RSpec.describe TicketsController, type: :controller do
 			end	
 			it 'should not update the ticket with invalid viewer id' do
 				ticket = FactoryGirl.create(:ticket)
-        a = Ticket.last
-				put :update, id:a.id+1, ticket: {purchase_date:ticket.purchase_date, movie_date:ticket.movie_date, price:ticket.price, viewer_id:nil}, format: 'json'
+        new_ticket = Ticket.last
+				put :update, id:new_ticket.id+1, ticket: {purchase_date:ticket.purchase_date, movie_date:ticket.movie_date, price:ticket.price, viewer_id:nil}, format: 'json'
 				response.should have_http_status(:not_found)
 			end
 			it 'should not update the ticket with invalid booking id' do
 				ticket = FactoryGirl.create(:ticket)
-        a = Ticket.last
-				put :update, id:a.id+1, ticket: {purchase_date:ticket.purchase_date, movie_date:ticket.movie_date, price:ticket.price, booking_id:nil}, format: 'json'
+        new_ticket = Ticket.last
+				put :update, id:new_ticket.id+1, ticket: {purchase_date:ticket.purchase_date, movie_date:ticket.movie_date, price:ticket.price, booking_id:nil}, format: 'json'
 				response.should have_http_status(:not_found)
 			end
 		end 
 		context 'DELETE destroy' do
 			it 'should not destroy the ticket with invalid id' do
 				ticket = FactoryGirl.create(:ticket)
-        a = Ticket.last
-				delete :destroy, id:a.id+1, format: 'json'
+        new_ticket = Ticket.last
+				delete :destroy, id:new_ticket.id+1, format: 'json'
 				response.should have_http_status(:not_found)
 			end
 		end

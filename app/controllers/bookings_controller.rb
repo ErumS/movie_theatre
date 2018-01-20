@@ -69,6 +69,6 @@ class BookingsController < ApplicationController
 
   private
     def booking_params
-      params.require(:booking).permit(:booking_type, :no_of_bookings, :theatre_id, :movie_id, :auditorium_id, :viewer_id, :showtime_id)
+      params.require(:booking).permit(:booking_category, :no_of_bookings, :theatre_id, :movie_id, :auditorium_id, :viewer_id, :showtime_id)
     end
 end

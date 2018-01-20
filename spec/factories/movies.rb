@@ -4,5 +4,6 @@ FactoryGirl.define do
     rating Faker::Number.between(1, 5)
     cast Faker::Name.name_with_middle
     duration Faker::Number.between(1, 4)
+    association :theatre, factory: :theatre, strategy: :create
   end
 end

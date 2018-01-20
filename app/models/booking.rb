@@ -5,6 +5,6 @@ class Booking < ActiveRecord::Base
 	belongs_to :viewer
 	belongs_to :showtime
 	has_many :tickets, dependent: :destroy
-	validates :booking_type, presence: true
+	validates :booking_category, :movie_id, :viewer_id, presence: true
 	validates :no_of_bookings, presence: true, inclusion: {in: 1..6}
 end

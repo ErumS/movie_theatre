@@ -5,6 +5,6 @@ class Viewer < ActiveRecord::Base
 	has_many :bookings, dependent: :destroy
 	has_many :tickets, dependent: :destroy
 	has_many :seats, dependent: :destroy
-	validates :name, presence: true
+	validates :name, :theatre_id, :movie_id, presence: true
 	validates :phone_no, presence: true, length: {in: 8..15}
 end
