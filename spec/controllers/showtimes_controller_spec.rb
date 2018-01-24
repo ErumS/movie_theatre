@@ -18,7 +18,7 @@ RSpec.describe ShowtimesController, type: :controller do
     context 'POST create' do
       it 'should create a valid showtime' do
         movie = FactoryGirl.create(:movie)
-        post :create, showtime: { time_of_show: '5:22', movie_id: movie.id }, format: 'json'
+        post :create, showtime: { time_of_show: Faker::Time.between(2.days.ago, Date.today, :all), movie_id: movie.id }, format: 'json'
         response.should have_http_status(:ok)
       end
     end

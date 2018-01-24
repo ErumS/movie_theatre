@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div id="edit_tick">
+    <div class="header">
+      <h3>Edit Ticket:</h3>
+    </div>
+    <div class="form_tick">
+      <form method="post" action="http://localhost:3000/tickets">
+        <table>
+          <tr>
+            <td>PURCHASE DATE:</td> <td><input type="text" name="purchase_date" placeholder="Ticket purchase date"></td>
+          </tr>
+          <tr>
+            <td>MOVIE DATE:</td> <td><input type="text" name="movie_date" placeholder="Ticket movie date"></td>
+          </tr>
+          <tr>
+            <td>PRICE:</td> <td><input type="text" name="price" placeholder="Ticket price"></td>
+          </tr>
+          <tr>
+            <td><input type="submit" value="Submit" onclick="updation(purchase_date.value, movie_date.value, price.value )"></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

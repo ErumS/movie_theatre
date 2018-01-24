@@ -20,7 +20,7 @@ RSpec.describe TicketsController, type: :controller do
         showtime = FactoryGirl.create(:showtime)
         viewer = FactoryGirl.create(:viewer)
         booking = FactoryGirl.create(:booking)
-        post :create, ticket: { purchase_date: '01-02-2016', movie_date: '01-03-2016', price: 125, showtime_id: showtime.id, viewer_id: viewer.id, booking_id: booking.id }, format: 'json'
+        post :create, ticket: { purchase_date: Faker::Date.between(7.days.ago, Date.today), movie_date: Faker::Date.between(9.days.ago, Date.today), price: Faker::Number.positive, showtime_id: showtime.id, viewer_id: viewer.id, booking_id: booking.id }, format: 'json'
         response.should have_http_status(:ok)
       end
     end

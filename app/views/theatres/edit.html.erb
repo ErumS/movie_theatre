@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div id="edit_thea">
+    <div class="header">
+      <h3>Edit Theatre:</h3>
+    </div>
+    <div class="form_thea">
+      <form method="post" action="http://localhost:3000/theatres">
+        <table>
+          <tr>
+            <td>NAME:</td> <td><input type="text" name="theatre_name" placeholder="Theatre name"></td>
+          </tr>
+          <tr>
+            <td>ADDRESS:</td> <td><input type="text" name="theatre_address" placeholder="Theatre address"></td>
+          </tr>
+          <tr>
+            <td>PHONE NUMBER:</td> <td><input type="text" name="theatre_phone_no" placeholder="Theatre phone_no"></td>
+          </tr>
+          <tr>
+            <td><input type="submit" value="Submit" onclick="updation(theatre_name.value, theatre_address.value, theatre_phone_no.value)"></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

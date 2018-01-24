@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div id="edit_book">
+    <div class="header">
+      <h3>Edit Booking:</h3>
+    </div>
+    <div class="form_audi">
+      <form method="post" action="http://localhost:3000/bookings">
+        <table>
+          <tr>
+            <td>BOOKING CATEGORY:</td> <td><input type="text" name="booking_category" placeholder="Booking Category"></td>
+          </tr>
+          <tr>
+            <td>NO. OF BOOKINGS:</td> <td><input type="text" name="no_of_bookings" placeholder="Booking no of bookings"></td>
+          </tr>
+          <tr>
+            <td><input type="submit" value="Submit" onclick="updation( booking_category.value, no_of_bookings.value )"></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

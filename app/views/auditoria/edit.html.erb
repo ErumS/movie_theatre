@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div id="edit_audi">
+    <div class="header">
+      <h3>Edit Auditorium:</h3>
+    </div>
+    <div class="form_audi">
+      <form method="post" action="http://localhost:3000/auditoria">
+        <table>
+          <tr>
+            <td>SCREEN SIZE:</td> <td><input type="text" name="audi_screen_size" placeholder="Auditorium screen size"></td>
+          </tr>
+          <tr>
+            <td>NO. OF SEATS:</td> <td><input type="text" name="audi_no_of_seats" placeholder="Auditorium no of screens"></td>
+          </tr>
+          <tr>
+            <td><input type="submit" value="Submit" onclick="updation( audi_screen_size.value, audi_no_of_seats.value )"></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

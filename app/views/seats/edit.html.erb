@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div id="edit_seat">
+    <div class="header">
+      <h3>Edit Seat:</h3>
+    </div>
+    <div class="form_seat">
+      <form method="post" action="http://localhost:3000/seats">
+        <table>
+          <tr>
+            <td>TYPE OF SEAT:</td> <td><input type="text" name="type_of_seat" placeholder="Type of seat"></td>
+          </tr>
+          <tr>
+            <td><input type="submit" value="Submit" onclick="updation( type_of_seat.value )"></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>  
+  <head>
+    <title>Booking</title>
+    <link href="/assets/bookings_manifest.css" media="all" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="index_book">
+      <h3>Listing Bookings</h3>
+      <div class="hidden">
+        <table class="booking" cellpadding="10">
+          <tr>
+            <th>BOOKING CATEGORY</th>
+            <th>Link</th>
+          </tr>
+          <tr id="template">
+            <td id="booking_category"></td>
+            <td id="show"></td>
+            <td id="delete"></td>
+          </tr>
+        </table>
+      </div>
+    </div> 
+
+    <div id="show_book">
+      <div class="hidden">
+        <table id="show_template"" cellpadding="10">
+          <tr>
+            <td>Booking Category:</td> <td id="booking_category"></td>
+          </tr>
+          <tr>
+            <td>No of Bookings:</td> <td id="no_of_bookings"></td>
+          </tr>
+          <tr>
+            <td id="back"></td> 
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

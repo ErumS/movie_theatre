@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div id="edit_view">
+    <div class="header">
+      <h3>Edit Viewer:</h3>
+    </div>
+    <div class="form_view">
+      <form method="post" action="http://localhost:3000/viewers">
+        <table>
+          <tr>
+            <td>NAME:</td> <td><input type="text" name="viewer_name" placeholder="Viewer name"></td>
+          </tr>
+          <tr>
+            <td>PHONE NUMBER:</td> <td><input type="text" name="viewer_phone_no" placeholder="Viewer phone_no"></td>
+          </tr>
+          <tr>
+            <td>MODE OF PAYMENT:</td> <td><input type="text" name="viewer_mode_of_payment" placeholder="Viewer mode of payment"></td>
+          </tr>
+          <tr>
+            <td><input type="submit" value="Submit" onclick="updation(viewer_name.value, viewer_phone_no.value, viewer_mode_of_payment.value )"></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

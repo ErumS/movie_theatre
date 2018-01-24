@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div id="edit_showt">
+    <div class="header">
+      <h3>Edit Showtime:</h3>
+    </div>
+    <div class="form_showt">
+      <form method="post" action="http://localhost:3000/showtimes">
+        <table>
+          <tr>
+            <td>TIME OF SHOW:</td> <td><input type="text" name="showtime_time_of_show" placeholder="Showtime time of show"></td>
+          </tr>
+          <tr>
+            <td><input type="submit" value="Submit" onclick="updation( showtime_time_of_show.value )"></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

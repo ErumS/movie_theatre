@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>  
+  <head>
+    <title>Movie</title>
+    <link href="/assets/theatres_manifest.css" media="all" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="index_mov">
+      <h3>Listing movies</h3>
+      <div class="hidden">
+        <table class="movie" cellpadding="10">
+          <tr>
+            <th>Name</th>
+            <th>Link</th>
+          </tr>
+          <tr id="template">
+            <td id="name"></td>
+            <td id="show"></td>
+            <td id="delete"></td>
+          </tr>
+        </table>
+      </div>
+    </div> 
+
+    <div id="show_mov">
+      <div class="hidden">
+        <table id="show_template"" cellpadding="10">
+          <tr>
+            <td>Name:</td> <td id="name"></td>
+          </tr>
+          <tr>
+            <td>Rating:</td> <td id="rating"></td>
+          </tr>
+          <tr>
+            <td>Cast:</td> <td id="cast"></td>
+          </tr>
+          <tr>
+            <td>Duration:</td> <td id="duration"></td>
+          </tr>
+          <tr>
+            <td id="back"></td> 
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
